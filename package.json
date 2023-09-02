@@ -2,14 +2,41 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "lint": "eslint .",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "sql:types": "npx kysely-codegen",
+    "sql:up": "tsx db/run.ts"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^0.8.2",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@types/pg": "^8.10.2",
+    "eslint": "^8.48.0",
+    "kysely-codegen": "^0.10.1",
     "nuxt": "^3.7.0"
+  },
+  "dependencies": {
+    "kysely": "^0.26.3",
+    "kysely-postgres-js": "^1.1.1",
+    "pg": "^8.11.3",
+    "postgres": "^3.3.5"
+  },
+  "eslintConfig": {
+    "extends": "@nuxtjs/eslint-config-typescript",
+    "rules": {
+      "no-console": "off",
+      "curly": [
+        "error",
+        "multi-or-nest"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   }
 }
